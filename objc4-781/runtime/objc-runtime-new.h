@@ -287,7 +287,14 @@ struct cache_t {
     static constexpr uintptr_t bucketsMask = ((uintptr_t)1 << (maskShift - maskZeroBits)) - 1;
     
     // Ensure we have enough bits for the buckets pointer.
-    static_assert(bucketsMask >= MACH_VM_MAX_ADDRESS, "Bucket field doesn't have enough bits for arbitrary pointers.");
+    
+    // MACH_VM_MAX_ADDRESS 0x1000000000   arm64架构下
+    // MACH_VM_MAX_ADDRESS 0x7fffffe00000 x86_64架构下
+    
+    //static_assert(bucketsMask >= MACH_VM_MAX_ADDRESS, "Bucket field doesn't have enough bits for arbitrary pointers.");
+    
+    static_assert(bucketsMask >= 0x1000000000, "Bucket field doesn't have enough bits for arbitrary pointers.");
+    
 #elif CACHE_MASK_STORAGE == CACHE_MASK_STORAGE_LOW_4
     // _maskAndBuckets stores the mask shift in the low 4 bits, and
     // the buckets pointer in the remainder of the value. The mask
