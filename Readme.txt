@@ -6,4 +6,5 @@
 
 //2020.12.07
 //修复 objc-runtime-new 报错问题
-//错误(Static_assert failed due to requirement 'bucketsMask >= ((unsigned long long)140737454800896ULL)' "Bucket field doesn't have enough bits for arbitrary pointers.)
+//错误(Static_assert failed due to requirement 'bucketsMask >= ((unsigned long long)140737454800896ULL)' 
+//"Bucket field doesn't have enough bits for arbitrary pointers.)
